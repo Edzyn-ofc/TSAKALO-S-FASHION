@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsakalo's Fashion | Oficial</title>
+    <style>
+        :root {
+            --azul-escuro: #1a3a5a;
+            --dourado: #c5a059;
+            --gelo: #f4f4f4;
+            --branco: #ffffff;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: var(--gelo); color: #333; }
+        
+        /* HEADER & PESQUISA */
+        header { 
+            background: var(--azul-escuro); 
+            color: var(--branco); 
+            padding: 30px 20px; 
+            text-align: center; 
+            border-bottom: 4px solid var(--dourado); 
+        }
+        header h1 { margin: 0; font-size: 2.2em; letter-spacing: 3px; }
+        
+        .busca-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .busca-input {
+            padding: 12px 20px;
+            width: 300px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+        }
+        .lupa-btn {
+            background: var(--dourado);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 24px; /* Lupa Aumentada */
+            color: var(--azul-escuro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .lupa-btn:hover { transform: scale(1.1); background: #d4b375; }
+
+        /* NAVEGAÇÃO */
+        nav { background: #333; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: 500; font-size: 0.9em; }
+        nav a:hover { color: var(--dourado); }
+
+        .container { max-width: 1300px; margin: 20px auto; padding: 0 20px; }
+        
+        h2 { border-left: 5px solid var(--dourado); padding-left: 10px; color: var(--azul-escuro); margin-top: 40px; }
+
+        /* SCROLL LATERAL */
+        .grid-scroll { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 20px; 
+            padding: 10px 5px 25px; 
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--dourado) transparent;
+        }
+        .grid-scroll::-webkit-scrollbar { height: 8px; }
+        .grid-scroll::-webkit-scrollbar-thumb { background: var(--dourado); border-radius: 10px; }
+
+        /* CARDS (4 POR LINHA) */
+        .card { 
+            background: var(--branco); 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+            text-align: center; 
+            min-width: calc(25% - 15px); /* Garante 4 por linha */
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            box-sizing: border-box;
+        }
+        @media (max-width: 1000px) { .card { min-width: calc(45%); } }
+        @media (max-width: 600px) { .card { min-width: calc(85%); } }
+
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+        .card h3 { margin: 15px 0 5px; color: #111; font-size: 1.1em; }
+        .card p { color: #666; font-size: 0.85em; height: 38px; overflow: hidden; margin-bottom: 10px; }
+        .card .preco { color: var(--azul-escuro); font-weight: bold; font-size: 1.2em; display: block; margin-bottom: 15px; }
+
+        .btn-pedido { 
+            background: #25d366; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-pedido:hover { background: #128c7e; }
+
+        footer { text-align: center; padding: 30px; background: var(--azul-escuro); color: white; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TSAKALO'S FASHION</h1>
+    <div class="busca-container">
+        <input type="text" class="busca-input" placeholder="O que você procura hoje?">
+        <button class="lupa-btn">🔍</button>
+    </div>
+</header>
+
+<nav>
+    <a href="#sapatos">Sapatos</a>
+    <a href="#camisas">Camisas</a>
+    <a href="#acessorios">Acessórios</a>
+    <a href="#sobre">Sobre Nós</a>
+</nav>
+
+<div class="container">
+    
+    <h2 id="sapatos">Sapatos Masculinos</h2>
+    <div class="grid-scroll">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="Oxford">
+            <h3>Timberland Oxford</h3>
+            <p>Couro legítimo com acabamento premium.</p>
+            <span class="preco">2.800,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500" alt="Vans">
+            <h3>Vans Old Skool</h3>
+            <p>Estilo urbano clássico e confortável.</p>
+            <span class="preco">1.600,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Nike">
+            <h3>Nike Air Max Red</h3>
+            <p>Amortecimento de alta performance.</p>
+            <span class="preco">4.500,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500" alt="Nike Green">
+            <h3>Nike Revolution Sport</h3>
+            <p>Leveza para caminhadas e treinos.</p>
+            <span class="preco">3.200,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500" alt="Adidas">
+            <h3>Adidas Classic White</h3>
+            <p>Minimalismo luxuoso para qualquer ocasião.</p>
+            <span class="preco">2.900,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+    </div>
+
+    <h2 id="camisas">Camisas Premium</h2>
+    <div class="grid-scroll">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500" alt="Camisa">
+            <h3>Camisa Slim Fit Gelo</h3>
+            <p>Corte impecável em algodão egípcio.</p>
+            <span class="preco">1.500,00 MT</span>
+            <button class="btn-pedido" onclick="fazerPedido(this)">Pedir no WhatsApp</button>
+        </div>
+        </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Tsakalo's Fashion - Sofisticação em cada detalhe.
+</footer>
+
+<script>function fazerPedido(elemento) {
+    const card = elemento.closest('.card');
+    const nome = card.querySelector('h3').innerText;
+    const preco = card.querySelector('.preco').innerText;
+
+    const numeroWhatsapp = "258848534256"; 
+    
+    // Removi a descrição e o link da imagem para a URL ficar curta e limpa
+    const mensagem = `Olá! Gostaria de encomendar o produto: *${nome}* no valor de *${preco}*.`;
+    
+    // Usamos o formato universal
+    const url = "https://wa.me/" + numeroWhatsapp + "?text=" + encodeURIComponent(mensagem);
+    
+    // Em vez de window.open, usamos o redirecionamento direto
+    window.location.assign(url);
+}
+
+    
+</script>
+
+</body>
+</html>
